@@ -10,15 +10,16 @@
 #cmd+k+c
 #---------------------------------------
 # You can set the project name for a specific tracer instance:
+import streamlit as st
 from langchain.callbacks.tracers import LangChainTracer
 tracer = LangChainTracer(project_name="Gett de Streamlit")
 
 import os
-LANGCHAIN_TRACING_V2=os.environ.get("LANGCHAIN_TRACING_V2")
-LANGCHAIN_ENDPOINT=os.environ.get('LANGCHAIN_ENDPOINT')
-LANGCHAIN_API_KEY = os.environ.get('LANGCHAIN_API_KEY')
-OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
-LANGCHAIN_PROJECT=os.environ.get('LANGCHAIN_PROJECT')
+LANGCHAIN_TRACING_V2 = st.secrets["tracing"]
+LANGCHAIN_ENDPOINT = st.secrets["lc_endpoint"]
+LANGCHAIN_API_KEY = st.secrets["lc_api_key"]
+OPENAI_API_KEY = st.secrets["opai_api_key"]
+LANGCHAIN_PROJECT = st.secrets["lc_project"]
 
 # Librerías para la extracción del texto del PDF
 from langchain.prompts import PromptTemplate
