@@ -21,6 +21,14 @@ LANGCHAIN_API_KEY = st.secrets["lc_api_key"]
 OPENAI_API_KEY = st.secrets["opai_api_key"]
 LANGCHAIN_PROJECT = st.secrets["lc_project"]
 
+
+os.environ['LANGCHAIN_TRACING_V2'] = st.secrets["tracing"]
+os.environ['LANGCHAIN_ENDPOINT'] = st.secrets["lc_endpoint"]
+os.environ['LANGCHAIN_API_KEY'] = st.secrets["lc_api_key"]
+os.environ['OPENAI_API_KEY'] = st.secrets["opai_api_key"]
+os.environ['LANGCHAIN_PROJECT'] = st.secrets["lc_project"]
+
+
 # Librerías para la extracción del texto del PDF
 from langchain.prompts import PromptTemplate
 
