@@ -2,6 +2,8 @@ import streamlit as st
 import streamlit_gett
 import os
 
+
+
 def iniciar_gett(url):
     # Se le pasa a Gett la ubicación del PDF
 
