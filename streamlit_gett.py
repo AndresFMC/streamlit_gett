@@ -11,7 +11,7 @@
 #---------------------------------------
 # You can set the project name for a specific tracer instance:
 from langchain.callbacks.tracers import LangChainTracer
-tracer = LangChainTracer(project_name="GettApp")
+tracer = LangChainTracer(project_name="Gett de Streamlit")
 
 import os
 LANGCHAIN_TRACING_V2=os.environ.get("LANGCHAIN_TRACING_V2")
