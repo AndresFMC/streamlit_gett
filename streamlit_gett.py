@@ -16,6 +16,7 @@ tracer = LangChainTracer(project_name="Gett de Streamlit")
 
 import os
 LANGCHAIN_TRACING_V2="true"
+LANGCHAIN_ENDPOINT=os.environ.get('LANGCHAIN_ENDPOINT')
 LANGCHAIN_API_KEY = os.environ.get('LANGCHAIN_API_KEY')
 OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
 LANGCHAIN_PROJECT="Gett de Streamlit"
