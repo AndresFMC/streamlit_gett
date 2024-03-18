@@ -44,6 +44,8 @@ def main():
             # Mostrar el resultado por pantalla
             st.header("Examen Tipo Test:")
             st.write(ett)
+            # Elimina el archivo temporal creado para cargar el PDF
+            os.remove("./temp.pdf")
                 
 
 if __name__ == '__main__':

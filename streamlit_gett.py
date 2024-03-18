@@ -108,8 +108,8 @@ def gett_action(url_pdf):
 
     Paso 2 - Organiza el conjunto de preguntas proporcionadas, 
     cada una con sus cuatro respuestas (precedidas de 'a)', 'b)', 'c)' y 'd)' respectivamente) y lístalas enumeradas
-    de la siguiente forma puesta entre '{{}}':\n\n
-       {{ 
+    de la siguiente forma':\n\n
+       
         1 - 'Texto pregunta 1'\n
             a) 'Texto respuesta a)'\n
             b) 'Texto respuesta b)'\n
@@ -128,17 +128,17 @@ def gett_action(url_pdf):
             c) 'Texto respuesta c)'\n
             d) 'Texto respuesta d)'\n\n
         ...
-        }}                                       
+                                              
                                                                                              
     Paso 3 - Tras la lista anterior haz una separación, añade el título 'Soluciones' y lista las soluciones de cada
-    una de las preguntas de la siguiente forma entre '{{}}':\n\n
-        {{
+    una de las preguntas de la siguiente forma:\n\n
+        
         Soluciones:\n
         
         1 - 'letra de la respuesta')\n
         2 - 'letra de la respuesta')\n
         3 - 'letra de la respuesta')\n
-        }}                                       
+                                             
                                                     
                                                     
     Paso 4 - Devuelve como respuesta únicamente el resultado de el Paso 2 y el Paso 3. 
