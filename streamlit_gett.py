@@ -9,7 +9,9 @@
 # Completion Tokens: 2896
 #cmd+k+c
 #---------------------------------------
-
+# You can set the project name for a specific tracer instance:
+from langchain.callbacks.tracers import LangChainTracer
+tracer = LangChainTracer(project_name="GettApp")
 
 import os
 LANGCHAIN_TRACING_V2=os.environ.get("LANGCHAIN_TRACING_V2")
