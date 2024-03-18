@@ -10,7 +10,7 @@
 #cmd+k+c
 #---------------------------------------
 # You can set the project name for a specific tracer instance:
-import streamlit as st
+
 from langchain.callbacks.tracers import LangChainTracer
 tracer = LangChainTracer(project_name="Gett de Streamlit")
 
@@ -28,10 +28,11 @@ import os
 # os.environ['OPENAI_API_KEY'] = st.secrets["opai_api_key"]
 # os.environ['LANGCHAIN_PROJECT'] = st.secrets["lc_project"]
 
+import os
 LANGCHAIN_TRACING_V2="true"
 LANGCHAIN_ENDPOINT="https://api.smith.langchain.com"
-LANGCHAIN_API_KEY = st.secrets["lc_api_key"]
-OPENAI_API_KEY = st.secrets["opai_api_key"]
+LANGCHAIN_API_KEY = os.environ.get('LANGCHAIN_API_KEY')
+OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
 LANGCHAIN_PROJECT="Gett de Streamlit"
 
 
