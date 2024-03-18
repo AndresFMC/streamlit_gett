@@ -1,3 +1,5 @@
+# Versión 2 de Gett con Streamlit
+
 import streamlit as st
 import streamlit_gett
 import os
