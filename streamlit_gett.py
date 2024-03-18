@@ -15,18 +15,24 @@ from langchain.callbacks.tracers import LangChainTracer
 tracer = LangChainTracer(project_name="Gett de Streamlit")
 
 import os
-LANGCHAIN_TRACING_V2 = st.secrets["tracing"]
-LANGCHAIN_ENDPOINT = st.secrets["lc_endpoint"]
+# LANGCHAIN_TRACING_V2 = st.secrets["tracing"]
+# LANGCHAIN_ENDPOINT = st.secrets["lc_endpoint"]
+# LANGCHAIN_API_KEY = st.secrets["lc_api_key"]
+# OPENAI_API_KEY = st.secrets["opai_api_key"]
+# LANGCHAIN_PROJECT = st.secrets["lc_project"]
+
+
+# os.environ['LANGCHAIN_TRACING_V2'] = st.secrets["tracing"]
+# os.environ['LANGCHAIN_ENDPOINT'] = st.secrets["lc_endpoint"]
+# os.environ['LANGCHAIN_API_KEY'] = st.secrets["lc_api_key"]
+# os.environ['OPENAI_API_KEY'] = st.secrets["opai_api_key"]
+# os.environ['LANGCHAIN_PROJECT'] = st.secrets["lc_project"]
+
+LANGCHAIN_TRACING_V2="true"
+LANGCHAIN_ENDPOINT="https://api.smith.langchain.com"
 LANGCHAIN_API_KEY = st.secrets["lc_api_key"]
 OPENAI_API_KEY = st.secrets["opai_api_key"]
-LANGCHAIN_PROJECT = st.secrets["lc_project"]
-
-
-os.environ['LANGCHAIN_TRACING_V2'] = st.secrets["tracing"]
-os.environ['LANGCHAIN_ENDPOINT'] = st.secrets["lc_endpoint"]
-os.environ['LANGCHAIN_API_KEY'] = st.secrets["lc_api_key"]
-os.environ['OPENAI_API_KEY'] = st.secrets["opai_api_key"]
-os.environ['LANGCHAIN_PROJECT'] = st.secrets["lc_project"]
+LANGCHAIN_PROJECT="Gett de Streamlit"
 
 
 # Librerías para la extracción del texto del PDF
