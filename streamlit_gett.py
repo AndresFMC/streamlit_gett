@@ -29,7 +29,7 @@ import os
 # os.environ['LANGCHAIN_PROJECT'] = st.secrets["lc_project"]
 
 import os
-LANGCHAIN_TRACING_V2=True
+LANGCHAIN_TRACING_V2=os.environ.get('LANGCHAIN_TRACING_V2')
 LANGCHAIN_ENDPOINT="https://api.smith.langchain.com"
 LANGCHAIN_API_KEY = os.environ.get('LANGCHAIN_API_KEY')
 OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
