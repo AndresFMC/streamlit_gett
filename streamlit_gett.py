@@ -123,43 +123,53 @@ def gett_action(url_pdf):
     Formúlalas de tal manera que estimulen el pensamiento crítico y la comprensión profunda del tema.
 
     Paso 2 - Organiza el conjunto de preguntas proporcionadas, 
-    cada una con sus cuatro respuestas (precedidas de 'a)', 'b)', 'c)' y 'd)' respectivamente) y lístalas enumeradas
-    de la siguiente forma':\n\n
-       
-        1 - 'Texto pregunta 1'\n
-            a) 'Texto respuesta a)'\n
-            b) 'Texto respuesta b)'\n
-            c) 'Texto respuesta c)'\n
-            d) 'Texto respuesta d)'\n\n
-        
-        2 - 'Texto pregunta 2'\n
-            a) 'Texto respuesta a)'\n
-            b) 'Texto respuesta b)'\n
-            c) 'Texto respuesta c)'\n
-            d) 'Texto respuesta d)'\n\n
-        
-        3 - 'Texto pregunta 3'\n
-            a) 'Texto respuesta a)'\n
-            b) 'Texto respuesta b)'\n
-            c) 'Texto respuesta c)'\n
-            d) 'Texto respuesta d)'\n\n
-        ...
-                                              
-                                                                                             
-    Paso 3 - Tras la lista anterior haz una separación, añade el título 'Soluciones' y lista las soluciones de cada
-    una de las preguntas de la siguiente forma:\n\n
-        
-        Soluciones:\n
-        
-        1 - 'letra de la respuesta')\n
-        2 - 'letra de la respuesta')\n
-        3 - 'letra de la respuesta')\n
-                                             
+    cada una con sus cuatro respuestas, en un formato JSON estructurado. 
+    Para cada pregunta, incluye un identificador único, 
+    la pregunta, las respuestas y, para cada respuesta, 
+    un booleano que indique si es correcta o incorrecta. 
+    Asegúrate de que el formato JSON sea válido y 
+    fácilmente interpretable por un humano o una máquina.
                                                     
+    Finalmente, devuelve únicamente el resultado del paso 2 completo
                                                     
-    Paso 4 - Devuelve como respuesta únicamente el resultado de el Paso 2 y el Paso 3. 
-    Asegúrate de que entre pregunta y pregunta haya un doble retorno de carro para que se vea todo más organizado
+    Paso 2 - Organiza el conjunto de preguntas proporcionadas, 
+    cada una con sus cuatro respuestas, en un formato JSON estructurado de la siguiente manera:                                              
     
+    ```json
+        {{
+        "preguntas": [
+            {{
+            "id": 1,
+            "texto": "Aquí va la pregunta",
+            "respuestas": [
+                {{"respuesta a": "Aquí va el texto de la respuesta a", "correcta": false}},
+                {{"respuesta b": "Aquí va el texto de la respuesta b", "correcta": false}},
+                {{"respuesta c": "Aquí va el texto de la respuesta c", "correcta": true}},
+                {{"respuesta d": "Aquí va el texto de la respuesta d", "correcta": false}}
+            ],
+            "solucion": "respuesta c"
+                                                    
+            }},
+            {{
+            "id": 2,
+            "texto": "Aquí va la siguiente pregunta",
+            "respuestas": [
+                {{"respuesta a": "Aquí va el texto de la respuesta a", "correcta": false}},
+                {{"respuesta b": "Aquí va el texto de la respuesta b", "correcta": true}},
+                {{"respuesta c": "Aquí va el texto de la respuesta c", "correcta": false}},
+                {{"respuesta d": "Aquí va el texto de la respuesta d", "correcta": false}}
+            ]
+            "solucion": "respuesta b"                                       
+            }}
+            // Añade más preguntas siguiendo el mismo patrón
+        ]
+        }}
+    
+    ```
+    Es importante que en las claves de las respuestas se distinga entre A, B, C o D para poder
+    manejar las respuestas independientemente.
+                                                    
+    Finalmente, devuelve únicamente el resultado del paso 2 completo    
                                                                                              
     """
     )

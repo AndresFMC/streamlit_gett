@@ -1,10 +1,8 @@
-# Versión 2 de Gett con Streamlit
-
 import streamlit as st
 import streamlit_gett
 import os
-
-
+import json
+import time
 
 def iniciar_gett(url):
     # Se le pasa a Gett la ubicación del PDF
@@ -12,6 +10,37 @@ def iniciar_gett(url):
     examen = streamlit_gett.gett_action(url)
 
     return examen
+
+# Función para mostrar las preguntas y respuestas
+def mostrar_preguntas(data):
+    for pregunta in data['preguntas']:
+
+        # 1 - ¿Texto de pregunta?
+        st.write(f"{pregunta['id']} - {pregunta['texto']}")
+
+        for respuesta in pregunta['respuestas']:
+
+            # Recorrer cada respuesta para extraer su contenido y si es correcta
+            for clave, texto in respuesta.items():
+                
+
+
+                if clave != 'correcta':  # Ignorar la clave 'correcta' para este paso
+
+                    letra_respuesta = clave.split()[-1] 
+                    texto_respuesta = f"\t{letra_respuesta}) {texto}"
+                    
+                    # Añadir '(Correcta)' si esta respuesta es la correcta
+                    if respuesta['correcta']:
+                        texto_respuesta += " (Correcta)"
+
+                    #st.write(texto_respuesta)
+                    # Se utiliza markdown para enriquecer la respuesta
+                    st.markdown(f"<pre>\t{texto_respuesta}</pre>", unsafe_allow_html=True)
+
+
+        st.write(f"Solución: {pregunta['solucion']}")
+        st.write("---")  # Añadir una línea divisoria
     
 
 
@@ -40,15 +69,38 @@ def main():
         # El botón está asociado a la función que lanza al gett
         generar = st.button("Generar")
         if generar:
-            ett = iniciar_gett(temp_file)
-
-            # Añadir un progreso del proceso
             
+            # Creación de barra de progreso
+            progress_text = "Exámen generándose, por favor espere unos instantes"
+            st.text(progress_text)
+            my_bar = st.progress(0)
+            my_bar.progress(5)
+            time.sleep(2)
+
+            my_bar.progress(15)
+            time.sleep(1)
+            my_bar.progress(25)
+
+            # Generación del examen
+            json_ett = iniciar_gett(temp_file)
+
+
+            my_bar.progress(60)
+            time.sleep(2)
+            
+            # Paso de json a diccionario
+            data = json.loads(json_ett)
+
+            my_bar.progress(80)
+            time.sleep(2)
+            
+            time.sleep(2)
+            my_bar.progress(100)
 
             # Mostrar el resultado por pantalla
             st.header("Examen Tipo Test:")
-            st.write(ett)
-            # Elimina el archivo temporal creado para cargar el PDF
+            
+            mostrar_preguntas(data)
             os.remove("./temp.pdf")
                 
 
