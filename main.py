@@ -31,8 +31,8 @@ def mostrar_preguntas(data):
                     texto_respuesta = f"\t{letra_respuesta}) {texto}"
                     
                     # Añadir '(Correcta)' si esta respuesta es la correcta
-                    if respuesta['correcta']:
-                        texto_respuesta += " (Correcta)"
+                    #if respuesta['correcta']:
+                    #    texto_respuesta += " (Correcta)"
 
                     #st.write(texto_respuesta)
                     # Se utiliza markdown para enriquecer la respuesta
