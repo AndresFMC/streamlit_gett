@@ -101,7 +101,10 @@ def main():
             st.header("Examen Tipo Test:")
             
             mostrar_preguntas(data)
+            my_bar.empty()
+
             os.remove("./temp.pdf")
+
                 
 
 if __name__ == '__main__':
