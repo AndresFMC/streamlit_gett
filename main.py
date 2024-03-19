@@ -71,7 +71,7 @@ def main():
         if generar:
             
             # Creación de barra de progreso
-            progress_text = "Exámen generándose, por favor espere unos instantes"
+            progress_text = "Examen generándose, por favor espere unos instantes"
             st.text(progress_text)
             my_bar = st.progress(0)
             my_bar.progress(5)
@@ -101,6 +101,7 @@ def main():
             st.header("Examen Tipo Test:")
             
             mostrar_preguntas(data)
+            progress_text.empty()
             my_bar.empty()
 
             os.remove("./temp.pdf")
