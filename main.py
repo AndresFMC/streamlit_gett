@@ -41,7 +41,50 @@ def mostrar_preguntas(data):
 
         st.write(f"Solución: {pregunta['solucion']}")
         st.write("---")  # Añadir una línea divisoria
+
+
+def boton_generar():
+    st.session_state.generando = True
+
+
+def generar_examen():
     
+
+    my_bar = st.progress(0)
+    my_bar.progress(5)
+    time.sleep(2)
+
+   
+    my_bar.progress(15)
+    time.sleep(1)
+
+    my_bar.progress(25)
+
+
+
+    my_bar.progress(60)
+    time.sleep(2)
+    
+
+    my_bar.progress(80)
+    time.sleep(2)
+    
+    time.sleep(2)
+    my_bar.progress(100)
+
+
+    st.write("Proceso finalizado. Para generar un nuevo examen suba de nuevo un PDF")  # Añadir una línea divisoria
+
+
+
+    # Mostrar el resultado por pantalla
+    st.header("Examen Tipo Test:")
+    mostrar_preguntas(data)
+
+    st.session_state.generando = False
+
+    my_bar.empty()
+
 
 
 def main():
@@ -53,8 +96,12 @@ def main():
     #st.write("(Texto de Write)")
     #texto_input = st.text_input("**Texto de Input**")
 
+    if 'generando' not in st.session_state:
+        st.session_state.generando = False
+
 
     pdf_file = st.file_uploader('Elige tu documento PDF para generar el examen', type="pdf")
+
     # Sólo si el PDF se ha subido
     if pdf_file is not None:
         # Crea un archivo temporal para extraerlo con PyMuPDFLoader desde su ubicación
@@ -64,47 +111,13 @@ def main():
             file_name = pdf_file.name
 
 
-
-        # Aparece el botón para generar el examen
-        # El botón está asociado a la función que lanza al gett
-        generar = st.button("Generar")
-        if generar:
-            
-            # Creación de barra de progreso
-            progress_text = "Examen generándose, por favor espere unos instantes"
-            st.text(progress_text)
-            my_bar = st.progress(0)
-            my_bar.progress(5)
-            time.sleep(2)
-
-            my_bar.progress(15)
-            time.sleep(1)
-            my_bar.progress(25)
-
-            # Generación del examen
-            json_ett = iniciar_gett(temp_file)
-
-
-            my_bar.progress(60)
-            time.sleep(2)
-            
-            # Paso de json a diccionario
-            data = json.loads(json_ett)
-
-            my_bar.progress(80)
-            time.sleep(2)
-            
-            time.sleep(2)
-            my_bar.progress(100)
-
-            # Mostrar el resultado por pantalla
-            st.header("Examen Tipo Test:")
-            
-            mostrar_preguntas(data)
-            progress_text.empty()
-            my_bar.empty()
-
-            os.remove("./temp.pdf")
+        # Se muestra el botón si aún no se ha empezado a generar
+        if not st.session_state.generando:
+            st.button('Generar', on_click=boton_generar)
+            st.write("Nota: Dependiendo del tamaño del PDF, el proceso puede tardar uno o varios minutos")
+        
+    if st.session_state.generando:
+        generar_examen()
 
                 
 
