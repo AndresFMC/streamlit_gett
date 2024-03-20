@@ -60,7 +60,7 @@ def generar_examen(pdf):
 
     my_bar.progress(25)
     # Generación del examen
-    son_ett = iniciar_gett(pdf)
+    json_ett = iniciar_gett(pdf)
 
 
 
@@ -118,7 +118,7 @@ def main():
         # Se muestra el botón si aún no se ha empezado a generar
         if not st.session_state.generando:
             st.button('Generar', on_click=boton_generar)
-            st.write("Nota: Dependiendo del tamaño del PDF, el proceso puede tardar uno o varios minutos")
+            st.write("Nota: Dependiendo del tamaño del PDF el proceso puede tardar uno o varios minutos")
         
     if st.session_state.generando:
         generar_examen(temp_file)
